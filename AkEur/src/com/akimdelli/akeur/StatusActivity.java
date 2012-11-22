@@ -3,7 +3,9 @@ package com.akimdelli.akeur;
 import winterwell.jtwitter.Twitter;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +27,7 @@ public class StatusActivity extends Activity implements OnClickListener {
         
         updateButton.setOnClickListener(this);
         
-        twitter = new Twitter("student", "password");
+        twitter = new Twitter();
         twitter.setAPIRootUrl("http://yamba.marakana.com/api");
     }
 
