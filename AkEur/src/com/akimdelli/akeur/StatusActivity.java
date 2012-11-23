@@ -38,6 +38,8 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         textCount.setText(Integer.toString(140)); 
         textCount.setTextColor(Color.GREEN);
         
+        editText.addTextChangedListener(this);
+        
         twitter = new Twitter();
         twitter.setAPIRootUrl("http://yamba.marakana.com/api");
     }
