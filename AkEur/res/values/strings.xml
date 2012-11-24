@@ -7,5 +7,12 @@
     <string name="buttonUpdate">Update</string>
     <string name="titleStatus">Status Update</string>
     <string name="hintText">Please enter your 140-character status</string>
+    <string name="titleUsername">Username</string>
+    <string name="summaryUsername">summaryUsername</string>
+    <string name="titlePassword">password</string>
+    <string name="titleApiRoot">apiRoot</string>
+    <string name="summaryPassword">password</string>
+    <string name="summaryApiRoot">apiRoot</string>
+    <string name="titlePrefs">preferences</string>
 
 </resources>
