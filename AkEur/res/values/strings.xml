@@ -2,17 +2,17 @@
 <resources>
 
     <string name="app_name">AkEur</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="titleAkEur">AkEur</string>
     <string name="menu_settings">Settings</string>
     <string name="buttonUpdate">Update</string>
     <string name="titleStatus">Status Update</string>
     <string name="hintText">Please enter your 140-character status</string>
     <string name="titleUsername">Username</string>
-    <string name="summaryUsername">summaryUsername</string>
+    <string name="summaryUsername">Please enter your username</string>
     <string name="titlePassword">password</string>
-    <string name="titleApiRoot">apiRoot</string>
-    <string name="summaryPassword">password</string>
-    <string name="summaryApiRoot">apiRoot</string>
+    <string name="summaryPassword">Please enter your password</string>
+    <string name="summaryApiRoot">URL of Root API for your service</string>
     <string name="titlePrefs">preferences</string>
+    <string name="titleApiRoot">API Root</string>
 
 </resources>
