@@ -46,26 +46,13 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         
         editText.addTextChangedListener(this);
         
-        twitter = new Twitter();
-        twitter.setAPIRootUrl("http://yamba.marakana.com/api");
-        
+             
         // Setup preferences
         prefs = PreferenceManager.getDefaultSharedPreferences( this); 
         prefs.registerOnSharedPreferenceChangeListener( this);
     }
     
-    private Twitter getTwitter() {
-    	if (twitter == null) {
-	    	String username, password, apiRoot;
-	    	username = prefs.getString("username", ""); 
-	    	password = prefs.getString("password", "");
-	    	apiRoot = prefs.getString("apiRoot", "http://yamba.marakana.com/api");
-	    	// Connect to twitter.com
-	    	twitter = new Twitter(username, password); //
-	    	twitter.setAPIRootUrl(apiRoot); //
-    	}
-    	return twitter;
-    }
+   
 
     // Asynchronously posts to twitter
     class PostToTwitter extends AsyncTask<String, Integer, String> { 
@@ -73,7 +60,7 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     	@Override
     	protected String doInBackground(String... statuses) { 
 	    	try {
-	    		winterwell.jtwitter.Status status = twitter.updateStatus(statuses[0]);
+	    		Twitter.Status status = getTwitter().updateStatus(statuses[0]);
 	    		return status.text;
 	    	} catch (TwitterException e) {
 	    		Log.e(TAG, e.toString());
@@ -88,19 +75,18 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
     		// Not used in this case
     	}
     	
+    	
+    	
     	// Called once the background activity has completed
     	@Override
     	protected void onPostExecute(String result) { 
-    		try {
-    			getTwitter().setStatus(editText.getText().toString());
-    		} catch (TwitterException e) {
-    			Log.d(TAG, "Twitter setStatus failed: " + e);
-    		}
+    		Toast.makeText(StatusActivity.this, result, Toast.LENGTH_LONG).show();    		
     	}
     }
     // Called when button is clicked
     public void onClick(View v) {
-    	twitter.setStatus(editText.getText().toString());
+    	String status = editText.getText().toString();
+        new PostToTwitter().execute(status);
     	Log.d(TAG, "onClicked");
     }
     
@@ -147,4 +133,17 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 	}
     
+	 private Twitter getTwitter() {
+	    	if (twitter == null) {
+		    	String username, password, apiRoot;
+		    	username = prefs.getString("username", ""); 
+		    	password = prefs.getString("password", "");
+		    	apiRoot = prefs.getString("apiRoot", "http://yamba.marakana.com/api");
+		    	// Connect to twitter.com
+		    	twitter = new Twitter("student", "password"); //
+		    	twitter.setAPIRootUrl(apiRoot); //
+	    	}
+	    	return twitter;
+	    }
+	
 }
