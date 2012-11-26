@@ -1,2 +1,18 @@
-bin
+#built application files
+*.apk
+*.ap_
+
+#files for the dex VM
+.dex
+
+#Java class files
+.class
+
+#generated Files
+bin/
+gen/
+
+#local configuration file (sdk path, etc)
+local.properties
+
 .metadata 
